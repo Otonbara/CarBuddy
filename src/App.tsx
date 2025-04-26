@@ -1,9 +1,10 @@
+import Hero from './pages/Hero'
 import './index.css'
 
 function App() {
   return (
     <>
-      <div className='bg-red-800 w-lvw h-lvh'></div>
+      <Hero/>
     </>
   )
 }

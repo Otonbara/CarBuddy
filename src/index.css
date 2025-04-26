@@ -1,1 +1,29 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@keyframes moveCar {
+  0% {
+    transform: translateX(-100%); /* Start off-screen to the left */
+  }
+  100% {
+    transform: translateX(300%); /* Move to the right, fully out of view */
+  }
+}
+
+@keyframes moveCloud {
+  0% {
+    transform: translateX(100%); /* Start off-screen to the right */
+  }
+  100% {
+    transform: translateX(-300%); /* Move to the left, fully out of view */
+  }
+}
+
+.animate-car {
+  animation: moveCar 5s linear infinite; /* Increased duration to 10s */
+  animation-delay: 1s; /* Added delay for car animation */
+}
+
+.animate-cloud {
+  animation: moveCloud 10s linear infinite; /* Increased duration to 15s */
+  animation-delay: 1s; /* Added delay for cloud animation */
+}

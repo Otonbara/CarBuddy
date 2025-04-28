@@ -69,7 +69,7 @@ export default function Hero() {
 
   return (
     <main>
-      <div className="relative bg-[#87CEEB]/60 lg:px-[100px] lg:py-[60px] px-[30px] py-[60px] z-20">
+      <div className="relative bg-[#87CEEB]/60 lg:px-[100px] lg:pt-[100px] px-[30px] py-[60px] z-20">
         <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-y-10 lg:gap-2.5">
           {/* Hero Text */}
           <div>

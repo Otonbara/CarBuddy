@@ -3,6 +3,7 @@ import { motion, useSpring, useTime, useTransform } from "framer-motion";
 import HeroCity from "../assets/Hero_City.png";
 import MovingCar from "../assets/Car.png";
 import MovingCloud from "../assets/Cloud.png";
+import MovingBirds from "../assets/birds.png";
 import Sedan from "../assets/sedan_car.png";
 import SUV from "../assets/suv_car.png";
 import Truck from "../assets/truck_car.png";
@@ -124,26 +125,48 @@ export default function Hero() {
                 alt="Moving Cloud"
                 className="w-[150px] object-cover"/>
             </motion.div>
+            {/* Moving Birds */}
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              viewport={{ once: true }}
+              className="absolute top-[25px] left-[-10px] animate-birds">
+              <img
+                src={MovingBirds}
+                alt="Moving Birds"
+                className="w-[150px] object-cover"/>
+            </motion.div>
           </motion.div>
         </div>
         <div className="font-[DM_Sans] flex justify-center mt-10 gap-[50px]">
-          <div className="relative">
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}>
             <button className="relative bg-[#696969] hover:bg-[#696969]/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10">
               <a href="">Book Now</a>
             </button>
             <motion.div className="absolute -inset-[2px] rounded-full" style={{ background: rotatingBg, filter: pulsingBg }}></motion.div>
-          </div>
-          <div className="relative">
+          </motion.div>
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}>
             <button className="relative bg-[#696969] hover:bg-[#696969]/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10">
               <a href="">Browse Cars</a>
             </button>
             <motion.div className="absolute -inset-[2px] rounded-full" style={{ background: rotatingBg, filter: pulsingBg }}></motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Transparent Platform */}
-      <div className="relative flex flex-col items-center justify-center bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg z-20 font-[Poppins]">
+      <div className="relative flex flex-col items-center justify-center bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg z-20 font-[Poppins] lg:px-[100px] px-[30px]">
         <h2 className="text-2xl font-bold text-center mb-6">Find Your Ride</h2>
 
         <form className="flex flex-col lg:flex-row md:items-center md:justify-between gap-4">

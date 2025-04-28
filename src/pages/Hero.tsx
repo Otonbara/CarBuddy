@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useSpring, useTime, useTransform } from "framer-motion";
 import HeroCity from "../assets/Hero_City.png";
 import MovingCar from "../assets/Car.png";
 import MovingCloud from "../assets/Cloud.png";
@@ -11,7 +11,7 @@ import Coupe from "../assets/coupe_car.png";
 
 export default function Hero() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedVehicle, setSelectedVehicle] = useState("Select Vehicle Type");
+  const [selectedVehicle, setSelectedVehicle] = useState("Vehicle Type");
 
   const vehicles = [
     { label: "Sedan", img: Sedan },
@@ -48,6 +48,23 @@ export default function Hero() {
     setSelectedVehicle(vehicle.label);
     setIsOpen(false);
   };
+
+  const time = useTime()
+
+  const rotate = useTransform(time, [0, 1000], [0, 360], { clamp: false });
+
+  const rotatingBg = useTransform(rotate, (r) =>{
+    return `conic-gradient(from ${r}deg, #2C2C2C, #282828, #242424, #202020, #1C1C1C, #181818, #141414, #101010, #0C0C0C, #080808)`
+  })
+
+  const pulse = useSpring(0, { damping: 0, mass: 5, stiffness: 5})
+  const pulsingBg = useTransform(pulse, (p) => {
+    return `blur(${p}px)`
+  })
+
+  useEffect(() => {
+    pulse.set(5);
+  }, []);
 
   return (
     <main>
@@ -109,20 +126,24 @@ export default function Hero() {
             </motion.div>
           </motion.div>
         </div>
-        <div className="font-[DM_Sans] flex justify-center mt-8 gap-4">
-          <button className="bg-[#696969] font-bold text-sm px-4 py-2 rounded-full hover:bg-[#696969]/70 transition duration-300 ease-in-out hover:shadow-sm shadow-black">
-            <a href="">Book Now</a>
-          </button>
-          <button className="bg-[#696969] font-bold text-sm px-4 py-2 rounded-full hover:bg-[#696969]/70 transition duration-300 ease-in-out hover:shadow-sm shadow-black">
-            <a href="">Browse Cars</a>
-          </button>
+        <div className="font-[DM_Sans] flex justify-center mt-10 gap-[50px]">
+          <div className="relative">
+            <button className="relative bg-[#696969] hover:bg-[#696969]/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10">
+              <a href="">Book Now</a>
+            </button>
+            <motion.div className="absolute -inset-[2px] rounded-full" style={{ background: rotatingBg, filter: pulsingBg }}></motion.div>
+          </div>
+          <div className="relative">
+            <button className="relative bg-[#696969] hover:bg-[#696969]/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10">
+              <a href="">Browse Cars</a>
+            </button>
+            <motion.div className="absolute -inset-[2px] rounded-full" style={{ background: rotatingBg, filter: pulsingBg }}></motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Transparent Floating Platform */}
-      <div className="absolute flex flex-col lg:top-[83%] md:top-[85%] top-[130%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg z-30 font-[Poppins]
-                w-full lg:w-[90%] md:w-[90%]">
+      {/* Transparent Platform */}
+      <div className="relative flex flex-col items-center justify-center bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg z-20 font-[Poppins]">
         <h2 className="text-2xl font-bold text-center mb-6">Find Your Ride</h2>
 
         <form className="flex flex-col lg:flex-row md:items-center md:justify-between gap-4">
@@ -207,8 +228,8 @@ export default function Hero() {
 
       {/* Gradient Background */}
       <div className="w-[600px] h-[400px] bg-[#87CEEB] rounded-full 
-                absolute lg:top-[50%] left-[50%] translate-x-[-50%] translate-y-[15%] blur-[150px] z-10"></div>
-      <div className="relative flex flex-col items-center justify-center lg:px-[100px] lg:py-[200px] px-[30px] pt-[560px] z-20">
+                absolute lg:top-[50%] left-[50%] translate-x-[-50%] translate-y-[15%] blur-[150px] z-10 hidden md:block"></div>
+      <div className="relative flex flex-col items-center justify-center lg:px-[100px] lg:py-[100px] px-[30px] py-[50px] z-20">
         {/* AVAILABLE CARS CAROUSEL */}
         <h2 className="text-center text-4xl font-bold font-[Poppins]">Available Cars</h2>
       </div>

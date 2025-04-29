@@ -1,6 +1,19 @@
 @import 'tailwindcss';
 
+html {
+  scroll-behavior: smooth;
+}
+
 @keyframes moveCar {
+  0% {
+    transform: translateX(-100%); /* Start off-screen to the left */
+  }
+  100% {
+    transform: translateX(300%); /* Move to the right, fully out of view */
+  }
+}
+
+@keyframes moveCar2 {
   0% {
     transform: translateX(-100%); /* Start off-screen to the left */
   }
@@ -28,16 +41,21 @@
 }
 
 .animate-car {
-  animation: moveCar 5s linear infinite; /* Increased duration to 10s */
+  animation: moveCar 5s linear infinite;
+  animation-delay: 1s; /* Added delay for car animation */
+}
+
+.animate-car2 {
+  animation: moveCar2 6s linear infinite;
   animation-delay: 1s; /* Added delay for car animation */
 }
 
 .animate-cloud {
-  animation: moveCloud 10s linear infinite; /* Increased duration to 15s */
+  animation: moveCloud 10s linear infinite;
   animation-delay: 1s; /* Added delay for cloud animation */
 }
 
 .animate-birds {
-  animation: moveBirds 7s linear infinite; /* Increased duration to 15s */
+  animation: moveBirds 7s linear infinite;
   animation-delay: 1s; /* Added delay for birds animation */
 }

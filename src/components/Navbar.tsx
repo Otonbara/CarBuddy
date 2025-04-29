@@ -7,7 +7,7 @@ import WeatherWidget from "./WeatherWidget";
 const navLinks = [
     { label: "Home", path: "/" },
     { label: "Browse Cars", path: "/Car" },
-    { label: "Book Now", path: "/Booking" },
+    { label: "Booking", path: "/Booking" },
     { label: "About/Contact", path: "/About_Contact" }
 ];
 

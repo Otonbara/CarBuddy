@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, useSpring, useTime, useTransform } from "framer-motion";
 import HeroCity from "../assets/Hero_City.png";
 import MovingCar from "../assets/Car.png";
+import MovingCar2 from "../assets/car_2.png";
 import MovingCloud from "../assets/Cloud.png";
 import MovingBirds from "../assets/birds.png";
 import Sedan from "../assets/sedan_car.png";
@@ -89,7 +91,7 @@ export default function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="w-[80vw] relative mx-auto overflow-hidden">
+            className="w-[80vw] relative lg:mx-auto pt-[60px] overflow-hidden">
             {/* Road & Skyscraper */}
             <motion.div
               initial={{ opacity: 0, y: -50 }}
@@ -101,7 +103,18 @@ export default function Hero() {
                 alt="Hero City"
                 className="w-full h-full object-cover"/>
             </motion.div>
-            {/* Moving Car */}
+            {/* Moving Cars */}
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              viewport={{ once: true }}
+              className="absolute bottom-[-50px] left-[-10px] animate-car2">
+              <img
+                src={MovingCar2}
+                alt="Moving Car2"
+                className="w-[150px] object-cover"/>
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -119,7 +132,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
               viewport={{ once: true }}
-              className="absolute top-[-25px] right-[-10px] animate-cloud">
+              className="absolute lg:top-[-20px] top-[20px] right-[-10px] animate-cloud">
               <img
                 src={MovingCloud}
                 alt="Moving Cloud"
@@ -131,7 +144,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
               viewport={{ once: true }}
-              className="absolute top-[25px] left-[-10px] animate-birds">
+              className="absolute lg:top-[25px] top-[40px] left-[-10px] animate-birds">
               <img
                 src={MovingBirds}
                 alt="Moving Birds"
@@ -147,7 +160,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}>
             <button className="relative bg-[#696969] hover:bg-[#696969]/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10">
-              <a href="">Book Now</a>
+              <Link to="/Booking">Book Now</Link>
             </button>
             <motion.div className="absolute -inset-[2px] rounded-full" style={{ background: rotatingBg, filter: pulsingBg }}></motion.div>
           </motion.div>
@@ -158,7 +171,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}>
             <button className="relative bg-[#696969] hover:bg-[#696969]/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10">
-              <a href="">Browse Cars</a>
+              <Link to="/Car">Browse Cars</Link>
             </button>
             <motion.div className="absolute -inset-[2px] rounded-full" style={{ background: rotatingBg, filter: pulsingBg }}></motion.div>
           </motion.div>
@@ -166,7 +179,7 @@ export default function Hero() {
       </div>
 
       {/* Transparent Platform */}
-      <div className="relative flex flex-col items-center justify-center bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg z-20 font-[Poppins] lg:px-[100px] px-[30px]">
+      <div className="relative flex flex-col items-center justify-center bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg z-30 font-[Poppins] lg:px-[100px] px-[30px]">
         <h2 className="text-2xl font-bold text-center mb-6">Find Your Ride</h2>
 
         <form className="flex flex-col lg:flex-row md:items-center md:justify-between gap-4">

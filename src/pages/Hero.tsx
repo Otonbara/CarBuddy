@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion, useSpring, useTime, useTransform } from "framer-motion";
 import HeroCity from "../assets/Hero_City.png";
 import MovingCar from "../assets/Car.png";
@@ -11,6 +11,7 @@ import SUV from "../assets/suv_car.png";
 import Truck from "../assets/truck_car.png";
 import Van from "../assets/van_car.png";
 import Coupe from "../assets/coupe_car.png";
+import carData from "../data/carData";
 
 export default function Hero() {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +68,10 @@ export default function Hero() {
 
   useEffect(() => {
     pulse.set(5);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <main>
@@ -159,8 +163,15 @@ export default function Hero() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}>
-            <button className="relative bg-[#696969] hover:bg-[#696969]/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10">
-              <Link to="/Booking">Book Now</Link>
+            <button 
+              className="relative bg-blue-600 hover:bg-blue-600/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10 cursor-pointer"
+              onClick={() => {
+                const selectedCar = carData.find((car) => car.id === 3);
+                if (selectedCar) {
+                  localStorage.setItem("selectedVehicle", JSON.stringify(selectedCar)); // Store the selected car
+                  navigate("/booking", { state: { selectedVehicle: selectedCar } });
+              }} }>
+              Book Now
             </button>
             <motion.div className="absolute -inset-[2px] rounded-full" style={{ background: rotatingBg, filter: pulsingBg }}></motion.div>
           </motion.div>
@@ -170,7 +181,7 @@ export default function Hero() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}>
-            <button className="relative bg-[#696969] hover:bg-[#696969]/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10">
+            <button className="relative bg-blue-600 hover:bg-blue-600/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10">
               <Link to="/Car">Browse Cars</Link>
             </button>
             <motion.div className="absolute -inset-[2px] rounded-full" style={{ background: rotatingBg, filter: pulsingBg }}></motion.div>
@@ -182,7 +193,12 @@ export default function Hero() {
       <div className="relative flex flex-col items-center justify-center bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg z-30 font-[Poppins] lg:px-[100px] px-[30px]">
         <h2 className="text-2xl font-bold text-center mb-6">Find Your Ride</h2>
 
-        <form className="flex flex-col lg:flex-row md:items-center md:justify-between gap-4">
+        <form 
+          className="flex flex-col lg:flex-row md:items-center md:justify-between gap-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            navigate("/Car", { state: { selectedVehicle } });
+          }}>
 
           {/* Type of Vehicle */}
           <div
@@ -248,14 +264,13 @@ export default function Hero() {
             <label className="text-sm font-semibold mb-1">Return Date & Time</label>
             <input
               type="datetime-local"
-              className="p-3 w-full md:w-56 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969]"
-            />
+              className="p-3 w-full md:w-56 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969]"/>
           </div>
 
           {/* Search Button */}
           <button
             type="submit"
-            className="bg-[#696969] font-bold text-sm p-3 w-full md:w-auto hover:bg-[#696969]/70 
+            className="bg-blue-600 font-bold text-sm p-3 w-full md:w-auto hover:bg-blue-500
                         transition duration-300 ease-in-out text-white rounded-md">
             Search
           </button>
@@ -268,6 +283,7 @@ export default function Hero() {
       <div className="relative flex flex-col items-center justify-center lg:px-[100px] lg:py-[100px] px-[30px] py-[50px] z-20">
         {/* AVAILABLE CARS CAROUSEL */}
         <h2 className="text-center text-4xl font-bold font-[Poppins]">Available Cars</h2>
+        <h3 className="text-center text-lg font-[DM_Sans]">Choose from a wide range of vehicles</h3>
       </div>
     </main>
   );

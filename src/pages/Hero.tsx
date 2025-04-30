@@ -182,7 +182,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}>
             <button className="relative bg-blue-600 hover:bg-blue-600/60 font-bold text-sm text-white px-4 py-2 rounded-full transition duration-300 ease-in-out z-10">
-              <Link to="/Car">Browse Cars</Link>
+              <Link to="/cars">Browse Cars</Link>
             </button>
             <motion.div className="absolute -inset-[2px] rounded-full" style={{ background: rotatingBg, filter: pulsingBg }}></motion.div>
           </motion.div>

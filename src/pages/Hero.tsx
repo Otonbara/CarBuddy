@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { motion, useSpring, useTime, useTransform } from "framer-motion";
+import { motion, useSpring, useTime, useTransform } from "motion/react";
 import HeroCity from "../assets/Hero_City.png";
 import MovingCar from "../assets/Car.png";
 import MovingCar2 from "../assets/car_2.png";
@@ -12,6 +12,12 @@ import Truck from "../assets/truck_car.png";
 import Van from "../assets/van_car.png";
 import Coupe from "../assets/coupe_car.png";
 import carData from "../data/carData";
+import Avail_Car_Carousel from "../components/Avail_Car_Carousel";
+import MarqueeComponent from "../components/Marquee";
+import { MdCarRental, MdOutlineConnectingAirports, MdCorporateFare, MdEventAvailable } from "react-icons/md";
+import { TbContract } from "react-icons/tb";
+import { GiCaptainHatProfile } from "react-icons/gi";
+import FAQ_Component from "../components/FAQ_Component"
 
 export default function Hero() {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,7 +81,7 @@ export default function Hero() {
 
   return (
     <main>
-      <div className="relative bg-[#87CEEB]/60 lg:px-[100px] lg:pt-[100px] px-[30px] py-[60px] z-20">
+      <section className="relative bg-[#87CEEB]/60 lg:px-[100px] lg:pt-[100px] px-[30px] py-[60px] z-20">
         <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-y-10 lg:gap-2.5">
           {/* Hero Text */}
           <div>
@@ -187,17 +193,22 @@ export default function Hero() {
             <motion.div className="absolute -inset-[2px] rounded-full" style={{ background: rotatingBg, filter: pulsingBg }}></motion.div>
           </motion.div>
         </div>
-      </div>
+      </section>
 
       {/* Transparent Platform */}
-      <div className="relative flex flex-col items-center justify-center bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg z-30 font-[Poppins] lg:px-[100px] px-[30px]">
+      <motion.div 
+        className="relative flex flex-col items-center justify-center bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg z-30 font-[Poppins] lg:px-[100px] px-[30px]"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        viewport={{ once: true }}>
         <h2 className="text-2xl font-bold text-center mb-6">Find Your Ride</h2>
 
         <form 
           className="flex flex-col lg:flex-row md:items-center md:justify-between gap-4"
           onSubmit={(e) => {
             e.preventDefault();
-            navigate("/Car", { state: { selectedVehicle } });
+            navigate("/cars", { state: { selectedVehicle } });
           }}>
 
           {/* Type of Vehicle */}
@@ -275,16 +286,123 @@ export default function Hero() {
             Search
           </button>
         </form>
-      </div>
+      </motion.div>
 
       {/* Gradient Background */}
       <div className="w-[600px] h-[400px] bg-[#87CEEB] rounded-full 
-                absolute lg:top-[50%] left-[50%] translate-x-[-50%] translate-y-[15%] blur-[150px] z-10 hidden md:block"></div>
-      <div className="relative flex flex-col items-center justify-center lg:px-[100px] lg:py-[100px] px-[30px] py-[50px] z-20">
-        {/* AVAILABLE CARS CAROUSEL */}
+                absolute lg:top-[50%] left-[50%] translate-x-[-50%] translate-y-[15%] blur-[150px] z-10 hidden md:block">
+      </div>
+       
+      {/* AVAILABLE CARS CAROUSEL */}
+      <motion.section 
+        className="relative flex flex-col items-center justify-center lg:px-[100px] lg:py-[50px] px-[30px] py-[50px] z-20"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        viewport={{ once: true }}>
         <h2 className="text-center text-4xl font-bold font-[Poppins]">Available Cars</h2>
         <h3 className="text-center text-lg font-[DM_Sans]">Choose from a wide range of vehicles</h3>
-      </div>
+        <Avail_Car_Carousel/>
+      </motion.section>
+
+      {/* SERVICES */}
+      <section className="flex flex-col items-center lg:px-[100px] lg:py-[50px] px-[30px] py-[50px]">
+        <h2 className="text-center text-4xl font-bold font-[Poppins] mb-8">Services We Offer</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* 1. Daily and Weekly Rentals */}
+          <motion.div 
+            className="p-6 shadow-lg flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}>
+            <MdCarRental className="w-10 h-10 text-white hover:text-black bg-[#696969] hover:bg-transparent py-2 px-2 mb-4 rounded-full"/>
+            <h3 className="text-2xl font-bold font-[DM_Sans] mb-2">Daily and Weekly Rentals</h3>
+            <p className="font-[Arial]">Flexible short-term rentals for both individuals and businesses at competitive rates.</p>
+          </motion.div>
+
+          {/* 2. Long-Term Leasing */}
+          <motion.div 
+            className="p-6 shadow-lg flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}>
+            <TbContract className="w-10 h-10 text-white hover:text-black bg-[#696969] hover:bg-transparent py-2 px-2 mb-4 rounded-full"/>
+            <h3 className="text-2xl font-bold font-[DM_Sans] mb-2">Long-Term Leasing</h3>
+            <p className="font-[Arial]">Affordable monthly plans for extended usage without ownership hassles.</p>
+          </motion.div>
+
+          {/* 3. Chauffeur Services */}
+          <motion.div 
+            className="p-6 shadow-lg flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}>
+            <GiCaptainHatProfile className="w-10 h-10 text-white hover:text-black bg-[#696969] hover:bg-transparent py-2 px-2 mb-4 rounded-full"/>
+            <h3 className="text-2xl font-bold font-[DM_Sans] mb-2">Chauffeur Services</h3>
+            <p className="font-[Arial]">Enjoy a smooth ride with our professional drivers for business or leisure.</p>
+          </motion.div>
+
+          {/* 4. Airport Pickup & Drop-off */}
+          <motion.div 
+            className="p-6 shadow-lg flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            viewport={{ once: true }}>
+            <MdOutlineConnectingAirports className="w-10 h-10 text-white hover:text-black bg-[#696969] hover:bg-transparent py-2 px-2 mb-4 rounded-full"/>
+            <h3 className="text-2xl font-bold font-[DM_Sans] mb-2">Airport Pickup & Drop-off</h3>
+            <p className="font-[Arial]">Timely and reliable transportation to and from the airport.</p>
+          </motion.div>
+
+          {/* 5. Corporate Rentals */}
+          <motion.div 
+            className="p-6 shadow-lg flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            viewport={{ once: true }}>
+            <MdCorporateFare className="w-10 h-10 text-white hover:text-black bg-[#696969] hover:bg-transparent py-2 px-2 mb-4 rounded-full"/>
+            <h3 className="text-2xl font-bold font-[DM_Sans] mb-2">Corporate Rentals</h3>
+            <p className="font-[Arial]">Custom plans for businesses, including fleet management and logistics support.</p>
+          </motion.div>
+
+          {/* 6. Event and Luxury Rentals */}
+          <motion.div 
+            className="p-6 shadow-lg flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            viewport={{ once: true }}>
+            <MdEventAvailable className="w-10 h-10 text-white hover:text-black bg-[#696969] hover:bg-transparent py-2 px-2 mb-4 rounded-full"/>
+            <h3 className="text-2xl font-bold font-[DM_Sans] mb-2">Event & Luxury Rentals</h3>
+            <p className="font-[Arial]">Premium and exotic vehicles for weddings, VIPs, and special occasions.</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* COMPANIES */}
+      <motion.section 
+        className="flex flex-col items-center lg:px-[100px] lg:py-[50px] px-[30px] py-[50px] overflow-hidden"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        viewport={{ once: true }}>
+        <h2 className="text-center text-4xl font-bold font-[Poppins] mb-4">Companies we work with</h2>
+        <div>
+          <MarqueeComponent/>
+        </div>
+      </motion.section>
+
+      {/* FAQ */}
+      <section className="lg:px-[100px] lg:py-[50px] px-[30px] py-[50px] bg-[url('/FAQ_Background.jpg')] bg-cover bg-center bg-no-repeat">
+        <h2 className="text-center text-4xl font-bold font-[Poppins] mb-4">Frequently Asked Questions</h2>
+        <div>
+          <FAQ_Component/>
+        </div>
+      </section>
     </main>
   );
 }

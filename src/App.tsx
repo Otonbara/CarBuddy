@@ -5,6 +5,7 @@ import BrowseCars from './pages/Car'
 import Booking from './pages/Booking'
 import CarDetails from './pages/CarDetails'
 import About_Contact from './pages/About_Contact'
+import Footer from './components/Footer'
 import './index.css'
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <Route path='/cars/:name' element={<CarDetails/>}/>
         <Route path='/About_Contact' element={<About_Contact/>}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   )
 }

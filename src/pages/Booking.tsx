@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Calendar, User, Phone, Mail, MapPin } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { motion } from 'motion/react'
 
 export default function BookingPage() {
   const navigate = useNavigate();
@@ -45,9 +46,14 @@ export default function BookingPage() {
       <h1 className="text-3xl font-bold mb-6 font-[Poppins]">Book Your Ride</h1>
 
       {/* Vehicle Details Section */}
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold">Selected Vehicle</h2>
-        <div className="flex items-center gap-4 p-4 border border-gray-300 rounded-md font-[DM_Sans]">
+      <motion.div 
+        className="mb-6"
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}>
+        <h2 className="text-xl font-semibold mb-4">Selected Vehicle</h2>
+        <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-4 p-4 font-[DM_Sans] shadow-md">
           <img
             src={selectedVehicle.image}
             alt={selectedVehicle.name}
@@ -58,10 +64,16 @@ export default function BookingPage() {
             <p className="font-bold mt-2">₦{selectedVehicle.price.toLocaleString()} / per day</p>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Booking Form */}
-      <form onSubmit={handleSubmit} className="space-y-6 font-[Poppins]">
+      <motion.form 
+        onSubmit={handleSubmit} 
+        className="space-y-6 font-[Poppins] shadow-lg p-4"
+        initial={{ opacity: 0, y: -100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        viewport={{ once: true }}>
         {/* Pickup Date & Time */}
         <div className="flex flex-col">
           <label className="text-sm font-semibold mb-1">Pickup Date & Time</label>
@@ -71,7 +83,7 @@ export default function BookingPage() {
               type="datetime-local"
               value={pickupDate}
               onChange={(e) => setPickupDate(e.target.value)}
-              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969]"
+              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969] w-full"
               required/>
           </div>
         </div>
@@ -85,7 +97,7 @@ export default function BookingPage() {
               type="datetime-local"
               value={returnDate}
               onChange={(e) => setReturnDate(e.target.value)}
-              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969]"
+              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969] w-full"
               required/>
           </div>
         </div>
@@ -99,7 +111,7 @@ export default function BookingPage() {
               type="text"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
-              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969]"
+              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969] w-full"
               required/>
           </div>
         </div>
@@ -113,7 +125,7 @@ export default function BookingPage() {
               type="email"
               value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
-              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969]"
+              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969] w-full"
               required/>
           </div>
         </div>
@@ -127,7 +139,7 @@ export default function BookingPage() {
               type="tel"
               value={userPhone}
               onChange={(e) => setUserPhone(e.target.value)}
-              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969]"
+              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969] w-full"
               required/>
           </div>
         </div>
@@ -140,7 +152,7 @@ export default function BookingPage() {
             <select
               value={pickupLocation}
               onChange={(e) => setPickupLocation(e.target.value)}
-              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969]"
+              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#696969] w-full"
               required>
               <option value="" disabled>Select location</option>
               <option value="Lagos">Lagos State</option>
@@ -157,7 +169,15 @@ export default function BookingPage() {
           className="bg-blue-600 font-bold text-sm p-3 w-full md:w-auto hover:bg-blue-500 transition duration-300 ease-in-out text-white rounded-md">
           Confirm Booking
         </button>
-      </form>
+      </motion.form>
+
+      <div className='flex justify-end mt-4'>
+        <Link 
+          to="/cars"
+          className='text-sm text-blue-600 underline hover:font-bold'>
+          Back to cars
+        </Link>
+      </div>
     </div>
   );
 }

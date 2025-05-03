@@ -60,7 +60,7 @@ export default function CarDetails() {
             Book Now
         </button>
         <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/cars")}
             className="bg-gray-600 hover:bg-gray-500 text-white px-6 py-2 rounded-full font-[DM_Sans] cursor-pointer">
             Back to Cars
         </button>

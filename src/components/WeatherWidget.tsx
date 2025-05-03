@@ -53,7 +53,7 @@ const WeatherWidget = () => {
   }, [API_KEY]);
 
   return (
-    <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full shadow-sm text-slate-700 text-xs font-semibold">
+    <div className="flex md:flex-col lg:flex-row items-center gap-3 bg-white/20 backdrop-blur-md px-3 py-1 lg:rounded-full md:rounded-none rounded-full shadow-sm text-slate-700 text-xs font-semibold">
       <span>{time}</span>
       {iconUrl && (
         <img src={iconUrl} alt="Weather Icon" className="w-6 h-6" />

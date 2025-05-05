@@ -10,6 +10,8 @@ import {
     FaLinkedinIn,
   } from "react-icons/fa";
 
+import { Link } from "react-router-dom";
+
   export default function Footer() {
     return (
       <footer className="bg-gray-900 text-white lg:px-[100px] lg:py-[50px] px-[30px] py-[50px]">
@@ -34,9 +36,9 @@ import {
           <div className="flex flex-col items-center lg:items-start">
             <h4 className="text-xl font-semibold font-[DM_Sans] mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm font-[Arial] opacity-90 flex flex-col items-center lg:items-start">
-              <li><a href="/" className="hover:text-gray-300 transition">Home</a></li>
-              <li><a href="/cars" className="hover:text-gray-300 transition">Available Cars</a></li>
-              <li><a href="/About_Contact" className="hover:text-gray-300 transition">About Us</a></li>
+              <li><Link to="/" className="hover:text-blue-600 hover:font-semibold transition">Home</Link></li>
+              <li><Link to="/cars" className="hover:text-blue-600 hover:font-semibold transition">Available Cars</Link></li>
+              <li><Link to="/About_Contact" className="hover:text-blue-600 hover:font-semibold transition">About Us</Link></li>
             </ul>
           </div>
   

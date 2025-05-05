@@ -50,7 +50,7 @@ export default function BookingPage() {
         className="mb-6"
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        transition={{ duration: 0.2, delay: 0 }}
         viewport={{ once: true }}>
         <h2 className="text-xl font-semibold mb-4">Selected Vehicle</h2>
         <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-4 p-4 font-[DM_Sans] shadow-md">
@@ -72,7 +72,7 @@ export default function BookingPage() {
         className="space-y-6 font-[Poppins] shadow-lg p-4"
         initial={{ opacity: 0, y: -100 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        transition={{ duration: 0.4, delay: 0.5 }}
         viewport={{ once: true }}>
         {/* Pickup Date & Time */}
         <div className="flex flex-col">

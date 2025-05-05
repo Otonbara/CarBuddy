@@ -107,6 +107,8 @@ const carData = [
         seats: 5,
         fuel: "Diesel",
         transmission: "Automatic"
+        mileage: "30 MPG",
+        year: 2024,
     },
     {
         id: 10,
@@ -117,6 +119,8 @@ const carData = [
         seats: 5,
         fuel: "Diesel",
         transmission: "Manual"
+        mileage: "30 MPG",
+        year: 2024,
     },
     {
         id: 11,
@@ -127,6 +131,8 @@ const carData = [
         seats: 5,
         fuel: "Petrol",
         transmission: "Automatic"
+        mileage: "30 MPG",
+        year: 2024,
     },
     {
         id: 12,
@@ -137,6 +143,8 @@ const carData = [
         seats: 5,
         fuel: "Diesel",
         transmission: "Automatic"
+        mileage: "30 MPG",
+        year: 2024,
     },
     //   Vans
     {
@@ -148,6 +156,8 @@ const carData = [
         seats: 7,
         fuel: "Petrol",
         transmission: "Automatic"
+        mileage: "30 MPG",
+        year: 2024,
     },
     {
         id: 14,
@@ -158,6 +168,8 @@ const carData = [
         seats: 7,
         fuel: "Petrol",
         transmission: "Automatic"
+        mileage: "30 MPG",
+        year: 2024,
     },
     {
         id: 15,
@@ -168,6 +180,8 @@ const carData = [
         seats: 8,
         fuel: "Petrol",
         transmission: "Manual"
+        mileage: "30 MPG",
+        year: 2024,
     },
     {
         id: 16,
@@ -178,6 +192,8 @@ const carData = [
         seats: 8,
         fuel: "Petrol",
         transmission: "Automatic"
+        mileage: "30 MPG",
+        year: 2024,
     },
     //   Coupes
     {
@@ -189,6 +205,8 @@ const carData = [
         seats: 2,
         fuel: "Petrol",
         transmission: "Automatic"
+        mileage: "30 MPG",
+        year: 2024,
     },
     {
         id: 18,
@@ -199,6 +217,8 @@ const carData = [
         seats: 2,
         fuel: "Petrol",
         transmission: "Manual"
+        mileage: "30 MPG",
+        year: 2024,
     },
     {
         id: 19,
@@ -209,6 +229,8 @@ const carData = [
         seats: 2,
         fuel: "Petrol",
         transmission: "Automatic"
+        mileage: "30 MPG",
+        year: 2024,
     },
     {
         id: 20,
@@ -219,6 +241,8 @@ const carData = [
         seats: 4,
         fuel: "Petrol",
         transmission: "Automatic"
+        mileage: "30 MPG",
+        year: 2024,
     }
 ]
 

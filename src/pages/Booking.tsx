@@ -36,7 +36,7 @@ export default function BookingPage() {
     console.log('Booking data:', bookingData);
 
     // Optionally navigate to confirmation page or show a success message
-    navigate('/confirmation', { state: { bookingData } });
+    navigate('/payment', { state: { bookingData } });
   };
 
   if (!selectedVehicle.name) return null;  // Optional loading or error handling

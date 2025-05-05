@@ -59,3 +59,21 @@ html {
   animation: moveBirds 7s linear infinite;
   animation-delay: 1s; /* Added delay for birds animation */
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .printable, .printable * {
+    visibility: visible;
+  }
+
+  .printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+}

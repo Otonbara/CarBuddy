@@ -106,7 +106,7 @@ const carData = [
         image: "/assets/trucks/Chevrolet_Silverado.png",
         seats: 5,
         fuel: "Diesel",
-        transmission: "Automatic"
+        transmission: "Automatic",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -118,7 +118,7 @@ const carData = [
         image: "/assets/trucks/Ford_F150.png",
         seats: 5,
         fuel: "Diesel",
-        transmission: "Manual"
+        transmission: "Manual",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -130,7 +130,7 @@ const carData = [
         image: "/assets/trucks/Toyota_Tundra.png",
         seats: 5,
         fuel: "Petrol",
-        transmission: "Automatic"
+        transmission: "Automatic",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -142,7 +142,7 @@ const carData = [
         image: "/assets/trucks/Dodge_RAM_1500.png",
         seats: 5,
         fuel: "Diesel",
-        transmission: "Automatic"
+        transmission: "Automatic",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -155,7 +155,7 @@ const carData = [
         image: "/assets/vans/Mercedes_Benz_V_Class.png",
         seats: 7,
         fuel: "Petrol",
-        transmission: "Automatic"
+        transmission: "Automatic",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -167,7 +167,7 @@ const carData = [
         image: "/assets/vans/Toyota_Sienna.png",
         seats: 7,
         fuel: "Petrol",
-        transmission: "Automatic"
+        transmission: "Automatic",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -179,7 +179,7 @@ const carData = [
         image: "/assets/vans/Honda_Odyssey.png",
         seats: 8,
         fuel: "Petrol",
-        transmission: "Manual"
+        transmission: "Manual",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -191,7 +191,7 @@ const carData = [
         image: "/assets/vans/Kia_Carnival.png",
         seats: 8,
         fuel: "Petrol",
-        transmission: "Automatic"
+        transmission: "Automatic",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -204,7 +204,7 @@ const carData = [
         image: "/assets/coupes/Porsche_911.png",
         seats: 2,
         fuel: "Petrol",
-        transmission: "Automatic"
+        transmission: "Automatic",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -216,7 +216,7 @@ const carData = [
         image: "/assets/coupes/Ford_Mustang.png",
         seats: 2,
         fuel: "Petrol",
-        transmission: "Manual"
+        transmission: "Manual",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -228,7 +228,7 @@ const carData = [
         image: "/assets/coupes/Chevrolet_Camaro.png",
         seats: 2,
         fuel: "Petrol",
-        transmission: "Automatic"
+        transmission: "Automatic",
         mileage: "30 MPG",
         year: 2024,
     },
@@ -240,7 +240,7 @@ const carData = [
         image: "/assets/coupes/BMW_2_Series_Coupe.png",
         seats: 4,
         fuel: "Petrol",
-        transmission: "Automatic"
+        transmission: "Automatic",
         mileage: "30 MPG",
         year: 2024,
     }
